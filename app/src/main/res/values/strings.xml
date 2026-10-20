@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DemoFilms</string>
+    <string name="txt_btndetails">Détails</string>
+    <string name="txt_annee">Année : %1$d</string>
+    <string name="txt_note">Note : %1$s</string>
+    <string name="cd_evaluation_etoile">Évaluation (étoile)</string>
+    <string name="cd_affiche_du_film">Affiche du film</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="scr_apropos_application_de_demonstration">Application de démonstration</string>
+    <string name="mediadtls_txt_annee">Année : %1$d</string>
+    <string name="media_dtls_txt_note">Note : %1$s/10</string>
+</resources>

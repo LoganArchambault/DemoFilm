@@ -1,0 +1,113 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "de0f919041cd358a779ed81f81820acd",
+    "entities": [
+      {
+        "tableName": "films",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `titre` TEXT NOT NULL, `annee` INTEGER NOT NULL, `note` REAL NOT NULL, `realisateurId` INTEGER, FOREIGN KEY(`realisateurId`) REFERENCES `realisateurs`(`realisateurId`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "titre",
+            "columnName": "titre",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "annee",
+            "columnName": "annee",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "note",
+            "columnName": "note",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "realisateurId",
+            "columnName": "realisateurId",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_films_realisateurId",
+            "unique": false,
+            "columnNames": [
+              "realisateurId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_films_realisateurId` ON `${TABLE_NAME}` (`realisateurId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "realisateurs",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "realisateurId"
+            ],
+            "referencedColumns": [
+              "realisateurId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "realisateurs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`realisateurId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nom` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "realisateurId",
+            "columnName": "realisateurId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nom",
+            "columnName": "nom",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "realisateurId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_realisateurs_nom",
+            "unique": true,
+            "columnNames": [
+              "nom"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_realisateurs_nom` ON `${TABLE_NAME}` (`nom`)"
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'de0f919041cd358a779ed81f81820acd')"
+    ]
+  }
+}
